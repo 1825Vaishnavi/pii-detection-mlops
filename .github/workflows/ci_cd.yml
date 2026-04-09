@@ -1,4 +1,4 @@
-name: Churn MLOps CI/CD Pipeline
+name: PII Detection CI/CD Pipeline
 
 on:
   push:
@@ -9,8 +9,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      MLFLOW_TRACKING_URI: sqlite:///mlflow.db
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -23,16 +21,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Download dataset
-        run: |
-          curl -L "https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv" -o data/raw/Telco-Customer-Churn.csv
-
-      - name: Run data processing
-        run: python src/data_processing.py
-
-      - name: Train model
-        run: python src/train.py
-
       - name: Run tests
         run: python -m pytest tests/ -v
 
@@ -44,11 +32,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build Docker image
-        run: docker build -t churn-api .
-
-      - name: Test Docker container starts
-        run: |
-          docker run -d -p 8000:8000 --name test-container churn-api
-          sleep 10
-          curl -f http://localhost:8000/health || exit 1
-          docker stop test-container
+        run: docker build -t pii-api .
