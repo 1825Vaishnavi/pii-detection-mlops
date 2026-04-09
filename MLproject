@@ -1,0 +1,20 @@
+name: churn-mlops
+
+python_env: python_env.yaml
+
+entry_points:
+  data_processing:
+    command: "python src/data_processing.py"
+
+  train:
+    parameters:
+      n_estimators: {type: int, default: 100}
+      max_depth: {type: int, default: 6}
+      learning_rate: {type: float, default: 0.1}
+    command: "python src/train.py"
+
+  evaluate:
+    command: "python src/evaluate.py"
+
+  full_pipeline:
+    command: "python src/data_processing.py && python src/train.py"

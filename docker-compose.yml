@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./mlflow.db:/app/mlflow.db
+      - ./data/processed:/app/data/processed
+    environment:
+      - MLFLOW_TRACKING_URI=sqlite:///mlflow.db
+    depends_on:
+      - mlflow
+
+  mlflow:
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    command: >
+      sh -c "pip install mlflow -q &&
+             python -m mlflow server
+             --backend-store-uri sqlite:///mlflow.db
+             --host 0.0.0.0
+             --port 5000"
