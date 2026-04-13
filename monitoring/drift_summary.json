@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-04-09T02:52:00.347849",
+  "drift_detected": true,
+  "drifted_metrics": [
+    "avg_entities_per_text"
+  ],
+  "drift_scores": {
+    "avg_text_length": 0.0693,
+    "avg_entities_per_text": 0.1284,
+    "avg_confidence": 0.0159,
+    "pii_rate": 0.0092
+  },
+  "reference_stats": {
+    "avg_text_length": 79.6196834100135,
+    "avg_entities_per_text": 2.0609046146112258,
+    "entity_distribution": {
+      "PER": 500,
+      "ORG": 400,
+      "LOC": 300
+    },
+    "avg_confidence": 0.8082220690886054,
+    "pii_rate": 0.6
+  },
+  "production_stats": {
+    "avg_text_length": 85.13675989177295,
+    "avg_entities_per_text": 2.325460893644803,
+    "entity_distribution": {
+      "PER": 463,
+      "ORG": 431,
+      "LOC": 296
+    },
+    "avg_confidence": 0.795347196042067,
+    "pii_rate": 0.5944743317255875
+  }
+}

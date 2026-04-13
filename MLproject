@@ -1,4 +1,4 @@
-name: churn-mlops
+name: pii-detection-mlops
 
 python_env: python_env.yaml
 
@@ -8,13 +8,21 @@ entry_points:
 
   train:
     parameters:
-      n_estimators: {type: int, default: 100}
-      max_depth: {type: int, default: 6}
-      learning_rate: {type: float, default: 0.1}
+      model_name: {type: str, default: "distilbert-base-uncased"}
+      epochs: {type: int, default: 2}
+      batch_size: {type: int, default: 16}
+      learning_rate: {type: float, default: 2e-5}
+      train_samples: {type: int, default: 2000}
     command: "python src/train.py"
 
   evaluate:
     command: "python src/evaluate.py"
 
+  predict:
+    command: "python src/predict.py"
+
   full_pipeline:
-    command: "python src/data_processing.py && python src/train.py"
+    command: >
+      python src/data_processing.py &&
+      python src/train.py &&
+      python src/evaluate.py
