@@ -17,19 +17,8 @@ PII/PHI detection is critical in healthcare, finance, and legal domains. This sy
 ## Architecture
 
 ```
-! <img width="1440" height="1788" alt="image" src="https://github.com/user-attachments/assets/ec412939-2213-4229-986d-154d56243c68" />
+!<img width="1440" height="1788" alt="image" src="https://github.com/user-attachments/assets/ec412939-2213-4229-986d-154d56243c68"/>
 
-
-##  Model Comparison
-
-| Model | Task | F1 | Precision | Recall | Speed | Use Case |
-|---|---|---|---|---|---|---|
-| **DistilBERT** | Token NER | 0.6448 | 0.6066 | 0.6881 | ~120ms | Precise extraction |
-| **TextCNN** | Binary Classification | 0.9995 | 1.0000 | 0.9990 | ~5ms | Fast screening |
-
-> **Production Strategy:** Use TextCNN for fast PII screening, then DistilBERT only on flagged texts — reduces latency by 80%!
-
----
 
 ##  MLOps Layers
 
