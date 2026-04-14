@@ -16,8 +16,8 @@ PII/PHI detection is critical in healthcare, finance, and legal domains. This sy
 
 ## Architecture
 
-```
-!<img width="1440" height="1788" alt="image" src="https://github.com/user-attachments/assets/135741e0-a91d-467a-9499-c8d4004de838" />
+!<img width="1440" height="1788" alt="image" src="https://github.com/user-attachments/assets/8cb47fe9-c549-40ac-b3fd-1cf88d68a0ec" />
+
 
 
 ##  MLOps Layers
