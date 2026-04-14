@@ -17,47 +17,8 @@ PII/PHI detection is critical in healthcare, finance, and legal domains. This sy
 ## Architecture
 
 ```
-WikiANN Dataset (HuggingFace)
-         │
-         ▼
-┌─────────────────────┐
-│   Data Processing    │  src/data_processing.py
-│   WikiANN English    │  20,000 samples, 7 NER labels
-└────────┬────────────┘
-         │
-    ┌────┴────┐
-    ▼         ▼
-DistilBERT  TextCNN
-NER Model   Classifier
-F1: 0.6448  F1: 0.9995
-    │         │
-    └────┬────┘
-         ▼
-  MLflow Tracking
-  (Experiment Registry)
-         │
-         ▼
-┌─────────────────────┐
-│    FastAPI Server    │
-│  /detect            │  Token-level NER
-│  /redact            │  PII replacement
-│  /batch_detect      │  Bulk processing
-└────────┬────────────┘
-         │
-    ┌────┴────┐
-    ▼         ▼
- Docker    GitHub Actions
-Container  CI/CD Pipeline
-         │
-         ▼
-┌─────────────────────┐
-│    Monitoring        │
-│  Evidently Drift     │
-│  Streamlit Dashboard │
-└─────────────────────┘
-```
+! <img width="1440" height="1788" alt="image" src="https://github.com/user-attachments/assets/ec412939-2213-4229-986d-154d56243c68" />
 
----
 
 ##  Model Comparison
 
@@ -155,7 +116,7 @@ python -m streamlit run monitoring/dashboard.py
 
 ##  API Endpoints
 
-### `POST /detect` — Detect PII entities
+### `POST /detect` - Detect PII entities
 ```json
 Request:  {"text": "John Smith works at Google in New York."}
 Response: {
@@ -169,7 +130,7 @@ Response: {
 }
 ```
 
-### `POST /redact` — Redact PII from text
+### `POST /redact` - Redact PII from text
 ```json
 Request:  {"text": "John Smith works at Google.", "replacement_style": "label"}
 Response: {
@@ -199,11 +160,11 @@ Every push to `main` triggers:
 ##  Monitoring Dashboard
 
 5-page Streamlit dashboard:
-- **Model Comparison** — DistilBERT vs TextCNN side by side
-- **Live PII Detection** — real-time detection and redaction
-- **Entity Analytics** — distribution of entity types and risk levels
-- **Drift Monitoring** — detect when production data shifts
-- **System Health** — API status, response times, CI/CD status
+- **Model Comparison** - DistilBERT vs TextCNN side by side
+- **Live PII Detection** - real-time detection and redaction
+- **Entity Analytics** - distribution of entity types and risk levels
+- **Drift Monitoring** - detect when production data shifts
+- **System Health** - API status, response times, CI/CD status
 
 ---
 
@@ -244,6 +205,6 @@ mlflow run . -e evaluate
 ##  Author
 
 **Vaishnavi Mallikarjun Gajarla**
-Master's in Data Analytics Engineering - Northeastern University | GPA: 3.7
+Master's in Data Analytics Engineering - Northeastern University 
 
 [GitHub](https://github.com/1825Vaishnavi) | [LinkedIn](https://linkedin.com/in/vaishnavi)
